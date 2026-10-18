@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0d12">
+<title>Stream Modern</title>
+<style>
+:root{--bg:#0b0d12;--panel:#141821;--panel2:#1b202b;--text:#f5f7fb;--muted:#a3adbd;--accent:#9b7bff;--accent2:#58d6c7;--line:#272d39}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -15%,#29204b 0,transparent 36%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}.topbar{height:72px;display:flex;align-items:center;gap:22px;padding:0 clamp(16px,4vw,56px);border-bottom:1px solid #ffffff12;background:#0b0d12dd;backdrop-filter:blur(18px);position:sticky;top:0;z-index:5}
+.brand{font-weight:900;font-size:20px;letter-spacing:-.8px;white-space:nowrap}.brand b{color:var(--accent)}.nav{display:flex;gap:20px}.nav button{background:none;border:0;color:var(--muted);padding:10px 0}.nav button.active,.nav button:hover{color:white}.search{margin-left:auto;display:flex;gap:8px;align-items:center;background:#171b25;border:1px solid var(--line);border-radius:14px;padding:0 12px;max-width:280px;width:34%}.search input{width:100%;min-width:0;background:transparent;border:0;outline:0;color:white;padding:12px 0}.search span{color:var(--muted)}.profile{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#10121a;font-weight:900}
+main{max-width:1440px;margin:auto;padding:24px clamp(16px,4vw,56px) 60px}.hero{position:relative;overflow:hidden;border-radius:28px;min-height:390px;display:flex;align-items:flex-end;padding:clamp(24px,5vw,56px);background:linear-gradient(90deg,#11131bf5 0%,#11131bd9 42%,#11131b22 100%),linear-gradient(0deg,#11131b 0%,transparent 60%),url('https://images.unsplash.com/photo-1489599849927-2ee91c4f?auto=format&fit=crop&w=1800&q=85');background-size:cover;background-position:center;isolation:isolate;border:1px solid #ffffff15}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,#1e1a37,#0b0d1266 70%);opacity:.55}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--accent2);text-transform:uppercase}.hero h1{font-size:clamp(36px,6vw,66px);line-height:.98;letter-spacing:-2.5px;margin:14px 0;max-width:650px}.hero p{color:#d0d5df;line-height:1.6;max-width:520px}.meta{display:flex;gap:10px;align-items:center;color:#c1c8d4;font-size:13px;flex-wrap:wrap}.pill{border:1px solid #ffffff28;border-radius:100px;padding:5px 10px}.actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;display:inline-flex;gap:8px;align-items:center}.primary{background:var(--accent);color:#11121a}.secondary{background:#ffffff14;border:1px solid #ffffff25;color:white}.section-head{display:flex;align-items:center;justify-content:space-between;margin:34px 0 16px;gap:12px}.section-head h2{font-size:22px;margin:0;letter-spacing:-.5px}.section-head small{color:var(--muted)}.chips{display:flex;gap:8px;overflow:auto;padding-bottom:6px}.chip{white-space:nowrap;border:1px solid var(--line);background:#131720;color:var(--muted);border-radius:99px;padding:9px 14px}.chip.active,.chip:hover{background:#29213f;border-color:#6852aa;color:white}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}.card{min-width:0;cursor:pointer}.poster{aspect-ratio:2/3;position:relative;overflow:hidden;border-radius:15px;background:linear-gradient(145deg,#252a38,#11131a);border:1px solid #ffffff12}.poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}.card:hover .poster img{transform:scale(1.04)}.rating{position:absolute;top:9px;left:9px;border-radius:7px;padding:5px 7px;background:#080a0dcc;font-size:11px;font-weight:800}.card h3{font-size:14px;margin:10px 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sub{font-size:12px;color:var(--muted)}.empty{padding:48px 10px;color:var(--muted);text-align:center;grid-column:1/-1}.footer{border-top:1px solid var(--line);margin-top:48px;padding-top:20px;color:var(--muted);font-size:12px;line-height:1.7}
+.modal{position:fixed;inset:0;background:#05060bdc;backdrop-filter:blur(12px);z-index:20;display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.dialog{background:#131720;border:1px solid #303747;border-radius:22px;max-width:850px;width:100%;max-height:90vh;overflow:auto;display:grid;grid-template-columns:240px 1fr;gap:24px;padding:24px}.dialog .poster{width:100%}.dialog h2{font-size:30px;margin:8px 0}.dialog p{color:#b7c0ce;line-height:1.6}.close{float:right;background:#252b37;border:0;color:white;border-radius:10px;padding:8px 12px}.playerbox{display:none;margin-top:18px}.playerbox input{width:100%;background:#0a0c11;color:white;border:1px solid #343b49;padding:12px;border-radius:10px}.playerbox video{width:100%;margin-top:10px;border-radius:12px;background:#000}.note{font-size:12px;color:var(--muted)}.mobile-menu{display:none}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav{gap:12px}.hero{min-height:340px}}
+@media(max-width:600px){.topbar{height:62px;gap:12px}.nav{display:none}.search{width:auto;flex:1}.brand{font-size:18px}.profile{display:none}main{padding-top:16px}.hero{min-height:380px;border-radius:20px;background-position:60% center}.hero h1{letter-spacing:-1.5px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.section-head h2{font-size:19px}.dialog{grid-template-columns:100px 1fr;gap:14px;padding:16px}.dialog h2{font-size:22px}.dialog .poster{align-self:start}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">STREAM<b>MODERN</b></div>
+  <nav class="nav" aria-label="Navigasi">
+    <button class="active" data-view="home">Beranda</button><button data-view="movies">Film</button><button data-view="series">Serial</button><button data-view="saved">Daftar Saya</button>
+  </nav>
+  <label class="search"><span>⌕</span><input id="search" placeholder="Cari film..." autocomplete="off" aria-label="Cari film"></label>
+  <div class="profile">S</div>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Pilihan editor · Minggu ini</div>
+      <h1>Temukan cerita<br>favoritmu.</h1>
+      <p>Jelajahi film dan serial dalam satu tempat. Temukan tontonan baru, simpan favorit, dan nikmati pengalaman browsing yang simpel.</p>
+      <div class="meta"><span class="pill">Pilihan Stream Modern</span><span>UI demo</span><span>•</span><span>2026</span></div>
+      <div class="actions"><button class="btn primary" id="browse">▶ Jelajahi katalog</button><button class="btn secondary" id="showSaved">♡ Daftar Saya</button></div>
+    </div>
+  </section>
+  <div class="section-head"><h2 id="listTitle">Sedang populer</h2><small id="resultCount">Katalog demo</small></div>
+  <div class="chips" id="chips">
+    <button class="chip active" data-genre="Semua">Semua</button><button class="chip" data-genre="Action">Action</button><button class="chip" data-genre="Drama">Drama</button><button class="chip" data-genre="Sci-Fi">Sci-Fi</button><button class="chip" data-genre="Comedy">Comedy</button><button class="chip" data-genre="Animation">Animation</button>
+  </div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+  <footer class="footer">STREAM MODERN · Antarmuka web demo<br>Konten yang ditampilkan adalah data contoh. Integrasi API Loklok dan sumber video belum dikonfigurasi. Gunakan hanya sumber streaming yang kamu berhak akses.</footer>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Detail film">
+  <div class="dialog">
+    <div class="poster"><img id="detailImg" alt="" src=""></div>
+    <div><button class="close" id="close">Tutup ✕</button><div class="eyebrow" id="detailType">FILM</div><h2 id="detailTitle"></h2><div class="meta" id="detailMeta"></div><p id="detailDesc"></p><div class="actions"><button class="btn primary" id="playBtn">▶ Buka pemutar</button><button class="btn secondary" id="saveBtn">♡ Simpan</button></div><div class="playerbox" id="playerbox"><p class="note">Masukkan URL video yang kamu miliki hak untuk diputar (mis. MP4 atau HLS yang diizinkan). URL demo tidak disediakan.</p><input id="videoUrl" placeholder="https://contoh.com/video.m3u8"><button class="btn primary" id="loadVideo" style="margin-top:8px">Muat video</button><video id="video" controls playsinline></video><p class="note" id="videoMessage"></p></div></div>
+  </div>
+</div>
+<script>
+const films=[
+{id:1,title:"The Last Horizon",year:2026,type:"Film",genre:"Sci-Fi",rating:"8.7",desc:"Di ambang penemuan besar, sebuah kru harus memilih antara pulang atau menyelamatkan masa depan.",img:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=700&q=85"},
+{id:2,title:"Midnight Run",year:2025,type:"Film",genre:"Action",rating:"8.2",desc:"Satu malam, satu misi, dan rahasia yang mengubah segalanya.",img:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=85"},
+{id:3,title:"Paper Hearts",year:2025,type:"Serial",genre:"Drama",rating:"8.4",desc:"Dua orang asing menemukan bahwa kesempatan kedua kadang datang dari tempat tak terduga.",img:"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=700&q=85"},
+{id:4,title:"Neon District",year:2026,type:"Serial",genre:"Sci-Fi",rating:"9.0",desc:"Di kota yang tak pernah tidur, seorang penyelidik memburu jejak kecerdasan buatan misterius.",img:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=85"},
+{id:5,title:"Sunday Club",year:2024,type:"Film",genre:"Comedy",rating:"7.9",desc:"Sebuah klub kecil mencoba menyelamatkan tempat favorit mereka dengan rencana yang kacau.",img:"https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=700&q=85"},
+{id:6,title:"Wildwood",year:2025,type:"Film",genre:"Animation",rating:"8.6",desc:"Petualangan penuh warna tentang keberanian, persahabatan, dan rumah.",img:"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=700&q=85"},
+{id:7,title:"Blue Hour",year:2024,type:"Serial",genre:"Drama",rating:"8.1",desc:"Sebuah keluarga menghadapi perubahan ketika masa lalu kembali mengetuk pintu.",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=85"},
+{id:8,title:"Orbit Zero",year:2026,type:"Film",genre:"Sci-Fi",rating:"8.8",desc:"Misi penyelamatan di orbit berubah menjadi teka-teki yang tak masuk akal.",img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=85"},
+{id:9,title:"Fast Lane",year:2023,type:"Film",genre:"Action",rating:"7.8",desc:"Pembalap jalanan berusaha keluar dari masa lalunya sebelum balapan terakhir.",img:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=85"},
+{id:10,title:"Tiny Giants",year:2025,type:"Serial",genre:"Animation",rating:"8.5",desc:"Para pahlawan kecil menjaga dunia besar dengan ide-ide luar biasa.",img:"https://images.unsplash.com/photo-1473862170180-84427c485aca?auto=format&fit=crop&w=700&q=85"}
+];
+const grid=document.querySelector("#grid"),search=document.querySelector("#search"),chips=document.querySelector("#chips");
+let genre="Semua",view="home",selected=null,saved=JSON.parse(localStorage.getItem("streammodern-saved")||"[]");
+function render(){
+ let q=search.value.trim().toLowerCase();
+ let data=films.filter(f=>(genre==="Semua"||f.genre===genre)&&(!q||(f.title+" "+f.genre+" "+f.desc).toLowerCase().includes(q))&&(view!=="movies"||f.type==="Film")&&(view!=="series"||f.type==="Serial")&&(view!=="saved"||saved.includes(f.id)));
+ document.querySelector("#listTitle").textContent=view==="saved"?"Daftar Saya":view==="movies"?"Film":view==="series"?"Serial":q?"Hasil pencarian":genre==="Semua"?"Sedang populer":genre;
+ document.querySelector("#resultCount").textContent=`${data.length} judul · katalog demo`;
+ grid.innerHTML=data.length?data.map(f=>`<article class="card" data-id="${f.id}"><div class="poster"><img loading="lazy" src="${f.img}" alt="Poster ${f.title}"><span class="rating">★ ${f.rating}</span></div><h3>${f.title}</h3><div class="sub">${f.year} · ${f.genre} · ${f.type}</div></article>`).join(""):`<div class="empty">Tidak ada judul yang cocok. Coba kata kunci atau kategori lain.</div>`;
+ grid.querySelectorAll(".card").forEach(el=>el.addEventListener("click",()=>openDetail(+el.dataset.id)));
+}
+function openDetail(id){selected=films.find(f=>f.id===id);document.querySelector("#detailImg").src=selected.img;document.querySelector("#detailImg").alt=selected.title;document.querySelector("#detailTitle").textContent=selected.title;document.querySelector("#detailType").textContent=selected.type.toUpperCase();document.querySelector("#detailMeta").innerHTML=`<span>${selected.year}</span><span>•</span><span>${selected.genre}</span><span>•</span><span>★ ${selected.rating}</span>`;document.querySelector("#detailDesc").textContent=selected.desc;document.querySelector("#saveBtn").textContent=saved.includes(id)?"♥ Tersimpan":"♡ Simpan";document.querySelector("#playerbox").style.display="none";document.querySelector("#videoMessage").textContent="";document.querySelector("#modal").classList.add("open");}
+function setView(v){view=v;document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===v));render();document.querySelector("#grid").scrollIntoView({behavior:"smooth",block:"start"});}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>setView(b.dataset.view)));
+chips.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{genre=b.dataset.genre;chips.querySelectorAll("button").forEach(c=>c.classList.toggle("active",c===b));render()}));
+search.addEventListener("input",render);document.querySelector("#browse").addEventListener("click",()=>document.querySelector("#grid").scrollIntoView({behavior:"smooth"}));document.querySelector("#showSaved").addEventListener("click",()=>setView("saved"));document.querySelector("#close").addEventListener("click",()=>document.querySelector("#modal").classList.remove("open"));document.querySelector("#modal").addEventListener("click",e=>{if(e.target.id==="modal")e.currentTarget.classList.remove("open")});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelector("#modal").classList.remove("open")});
+document.querySelector("#saveBtn").addEventListener("click",()=>{if(!selected)return;saved=saved.includes(selected.id)?saved.filter(x=>x!==selected.id):[...saved,selected.id];localStorage.setItem("streammodern-saved",JSON.stringify(saved));document.querySelector("#saveBtn").textContent=saved.includes(selected.id)?"♥ Tersimpan":"♡ Simpan";if(view==="saved")render()});
+document.querySelector("#playBtn").addEventListener("click",()=>{document.querySelector("#playerbox").style.display="block";document.querySelector("#playerbox").scrollIntoView({behavior:"smooth",block:"nearest"})});
+document.querySelector("#loadVideo").addEventListener("click",()=>{const url=document.querySelector("#videoUrl").value.trim(),video=document.querySelector("#video"),msg=document.querySelector("#videoMessage");if(!url){msg.textContent="Masukkan URL video terlebih dahulu.";return}try{const u=new URL(url);if(!["http:","https:"].includes(u.protocol))throw Error();video.src=u.href;video.load();msg.textContent="Video dimuat. Jika format HLS tidak didukung browser, gunakan URL MP4 atau tambahkan pemutar HLS yang sesuai."}catch(e){msg.textContent="URL tidak valid. Gunakan alamat http:// atau https://."}});
+render();
+</script>
+</body>
+</html>
